@@ -73,6 +73,7 @@ void sendcrypt()
     unsigned char    pubexponent[NBITSINKEY] ;
     int        lenkey ;
     int        lenexpo ;
+    const BIGNUM *n, *e;
     
     /*
     ** Ask for the private and public Key
@@ -84,8 +85,11 @@ void sendcrypt()
     /*
     ** Now extract the public key in order to send it
     */
-    lenkey  = BN_bn2mpi(myrsa->n,pubkey) ;
-    lenexpo = BN_bn2mpi(myrsa->e,pubexponent) ;
+    RSA_get0_key(myrsa, &n, &e, NULL);
+    lenkey  = BN_bn2mpi(n,pubkey) ;
+    lenexpo = BN_bn2mpi(e,pubexponent) ;
+    FREE(n);
+    FREE(e);
     mess = (struct message *) buf ;
     mess->code = MSG_CRYPT ;
 #ifndef WORDS_BIGENDIAN

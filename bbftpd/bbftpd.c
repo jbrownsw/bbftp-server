@@ -843,10 +843,6 @@ main (argc,argv,envp)
         struct timeval tp ;
         unsigned int seed ;
         /*
-        ** Load the error message from the crypto lib
-        */
-        ERR_load_crypto_strings() ;
-        /*
         ** Initialize the buffrand buffer which is giong to be used to initialize the 
         ** random generator
         */

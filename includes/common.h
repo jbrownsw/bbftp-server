@@ -31,6 +31,8 @@
 
 *****************************************************************************/
 
+#include <stddef.h>
+
 /* COMPRESSION and NOCOMPRESSION :
 **		Often used in routine call (more readable than 0 or 1)
 */
